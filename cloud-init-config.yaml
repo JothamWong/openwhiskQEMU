@@ -1,0 +1,26 @@
+#cloud-config
+password: ubuntu
+chpasswd: { expire: False }
+ssh_pwauth: True
+
+write_files:
+  - path: /root/setup-openwhisk.sh
+    permissions: '0755'
+    content: |
+      #!/bin/bash
+      apt-add-repository ppa:ansible/ansible
+      apt-get update
+      apt-get install -y docker.io docker-compose
+      sudo add-apt-repository ppa:deadsnakes/ppa
+      sudo apt install python3.10 python3.10-venv python3.10-dev python-is-python3 libyaml-dev zip jq
+      apt install -y default-jdk default-jre python3-pip npm
+      pip3 install ansible pycurl matplotlib numpy
+      systemctl enable docker
+      systemctl start docker
+      usermod -aG docker ubuntu
+      git clone "https://github.com/JothamWong/openwhisk.git" ~/openwhisk
+      ENVIRONMENT=local
+      chmod -R 777 ~/openwhisk
+
+runcmd:
+  - /root/setup-openwhisk.sh
