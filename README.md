@@ -42,7 +42,7 @@ Download all necessary dependencies
 
 ```bash
 sudo apt update
-sudo apt install python3.8-venv ansible tar
+sudo apt install python3.8-venv ansible tar jq
 ```
 
 A quick sanity check on ansible, cos it has been a source of issues in the past.
@@ -127,7 +127,11 @@ cd serverless-benchmarks
 python3 install.py
 # Now wait for Openwhisk to be fully deployed in the other terminal, then proceed
 . python-venv/bin/activate
-# Now you are in the python venv for sebs and can run benchmarks!
+# TODO: Make sure makefile check-minio does not show failed output
+bash run_minio.sh
+# Build the image recognition serverless function and invoke 10 times closed loop
+make test
+# If the above succeeds, the set up is complete!
 ```
 
 ### Crucial notes
