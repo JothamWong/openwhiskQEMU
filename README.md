@@ -103,8 +103,6 @@ AUTH=23bc46b1-71f6-4ed5-8c54-816aa4f8c502:123zO3xZCLrMN6v2BKK1dXYFpXlPkccOFqm12C
 
 At this point, take a snapshot so we don't have to do all this again!
 
-Test that the wsk cli has been properly set up by invoking a built in action
-
 ```bash
 qemu-img snapshot -c openwhisk_setup openwhisk-vm.qcow2
 # Verify that the snapshot exists
