@@ -127,6 +127,9 @@ python3 install.py
 . python-venv/bin/activate
 # TODO: Make sure makefile check-minio does not show failed output
 bash run_minio.sh
+# Change system config.json to point to your docker repository and login with your
+# docker credentials here
+docker login
 # Build the image recognition serverless function and invoke 10 times closed loop
 make test
 # If the above succeeds, the set up is complete!
