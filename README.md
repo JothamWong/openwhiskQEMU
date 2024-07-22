@@ -42,7 +42,7 @@ Download all necessary dependencies
 
 ```bash
 sudo apt update
-sudo apt install python3.8-venv ansible tar jq
+sudo apt install python3.8-venv ansible tar jq zip
 ```
 
 A quick sanity check on ansible, cos it has been a source of issues in the past.
@@ -134,6 +134,9 @@ docker login
 make test
 # If the above succeeds, the set up is complete!
 ```
+
+We use docker hub to store our serverless images.
+TODO: In the future, they shud really be cached so that they don't have to be rebuilt.
 
 ### Crucial notes
 
